@@ -10,7 +10,7 @@
     "unicode-trie": "^0.3.0"
   },
   "devDependencies": {
-    "codepoints": "^1.0.0",
+    "codepoints": "^1.2.0",
     "coffee-script": "^1.9.1",
     "mocha": "^2.2.1"
   },
