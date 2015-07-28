@@ -1,6 +1,6 @@
 {
   "name": "unicode-properties",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Provides fast access to unicode character properties",
   "directories": {
     "test": "test"
