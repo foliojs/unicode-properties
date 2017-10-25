@@ -1,7 +1,11 @@
 UnicodeTrie = require 'unicode-trie'
 data = require './data.json'
-fs = require 'fs'
-trie = new UnicodeTrie fs.readFileSync __dirname + '/data.trie'
+
+# Trie is serialized as a Buffer in node, but here
+# we may be running in a browser so we make an Uint8Array
+trieBuffer = require './trie.json'
+trieData = new Uint8Array trieBuffer.data
+trie = new UnicodeTrie trieData
 
 log2 = Math.log2 or (n) ->
   Math.log(n) / Math.LN2

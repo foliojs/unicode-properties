@@ -78,7 +78,10 @@ for codePoint in codePoints when codePoint?
   
   trie.set codePoint.code, val
 
-fs.writeFileSync 'data.trie', trie.toBuffer()
+# Trie is serialized suboptimally as JSON so it can be loaded via require,
+# allowing unicode-properties to work in the browser
+fs.writeFileSync 'trie.json', JSON.stringify trie.toBuffer()
+
 fs.writeFileSync 'data.json', JSON.stringify
   categories: Object.keys(categories)
   combiningClasses: Object.keys(combiningClasses)
