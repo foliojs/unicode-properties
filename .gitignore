@@ -2,4 +2,5 @@ data.json
 data.trie
 .DS_Store
 node_modules/
-*.js
+dist/
+unicode-properties.*.js
