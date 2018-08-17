@@ -1,5 +1,6 @@
 data.json
 data.trie
+trie.json
 .DS_Store
 node_modules/
 dist/

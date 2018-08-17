@@ -14,7 +14,6 @@ const getCJS = override => Object.assign({}, cjs, override)
 const getESM = override => Object.assign({}, esm, override)
 
 const configBase = {
-  input: './index.js',
   plugins: [
     babel({
       babelrc: false,
@@ -22,17 +21,36 @@ const configBase = {
       plugins: [ 'external-helpers'],
       exclude: 'node_modules/**'
     })
+  ]
+}
+
+const nodeConfig = Object.assign({}, configBase, {
+  input: './node.js',
+  output: [
+    getESM({ file: './unicode-properties.es.js' }),
+    getCJS({ file: './unicode-properties.cjs.js' }),
   ],
   external: Object.keys(dependencies).concat([
     'fs',
     `${__dirname}/data.json`
-  ]),
+  ])
+});
+
+
+const browserConfig = Object.assign({}, configBase, {
+  input: './browser.js',
   output: [
-    getESM({ file: './unicode-properties.esm.js' }),
-    getCJS({ file: './unicode-properties.cjs.js' }),
-  ]
-}
+    getESM({ file: './unicode-properties.browser.es.js' }),
+    getCJS({ file: './unicode-properties.browser.cjs.js' }),
+  ],
+  external: Object.keys(dependencies).concat([
+    `${__dirname}/data.json`,
+    `${__dirname}/trie.json`
+  ])
+});
+
 
 export default [
-  configBase
+  nodeConfig,
+  browserConfig
 ]
