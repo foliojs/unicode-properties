@@ -1,8 +1,9 @@
 import fs from 'fs';
+import path from 'path';
 import UnicodeTrie from 'unicode-trie';
 import data from './data.json';
 
-const trie = new UnicodeTrie(fs.readFileSync(__dirname + '/data.trie'));
+const trie = new UnicodeTrie(fs.readFileSync(path.join(__dirname, 'data.trie')));
 const log2 = Math.log2 || (n => Math.log(n) / Math.LN2);
 const bits = (n) => ((log2(n) + 1) | 0);
 

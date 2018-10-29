@@ -45,7 +45,7 @@
     "./data.json",
     "./data.trie",
     "./unicode-properties.cjs.js",
-    "./unicode-properties.esm.js",
+    "./unicode-properties.esm.js"
   ],
   "author": "Devon Govett <devongovett@gmail.com>",
   "license": "MIT",
