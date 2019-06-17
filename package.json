@@ -8,7 +8,7 @@
     "test": "test"
   },
   "dependencies": {
-    "brfs": "^1.4.0",
+    "brfs": "^2.0.2",
     "unicode-trie": "^0.3.0"
   },
   "devDependencies": {
@@ -45,7 +45,7 @@
     "./data.json",
     "./data.trie",
     "./unicode-properties.cjs.js",
-    "./unicode-properties.esm.js",
+    "./unicode-properties.esm.js"
   ],
   "author": "Devon Govett <devongovett@gmail.com>",
   "license": "MIT",
