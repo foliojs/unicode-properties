@@ -2,7 +2,7 @@
   "name": "unicode-properties",
   "version": "1.2.1",
   "description": "Provides fast access to unicode character properties",
-  "main": "./dist/unicode-properties.cjs.js",
+  "main": "./unicode-properties.cjs.js",
   "module": "./unicode-properties.es.js",
   "browser": {
     "./unicode-properties.es.js": "./unicode-properties.browser.es.js",
