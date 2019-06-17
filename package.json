@@ -41,16 +41,16 @@
     "codepoint"
   ],
   "files": [
-    "./data.json",
-    "./data.trie",
-    "./unicode-properties.es.js",
-    "./unicode-properties.es.js.map",
-    "./unicode-properties.cjs.js",
-    "./unicode-properties.cjs.js.map",
-    "./unicode-properties.browser.es.js",
-    "./unicode-properties.browser.es.js.map",
-    "./unicode-properties.browser.cjs.js",
-    "./unicode-properties.browser.cjs.js.map"
+    "data.json",
+    "data.trie",
+    "unicode-properties.es.js",
+    "unicode-properties.es.js.map",
+    "unicode-properties.cjs.js",
+    "unicode-properties.cjs.js.map",
+    "unicode-properties.browser.es.js",
+    "unicode-properties.browser.es.js.map",
+    "unicode-properties.browser.cjs.js",
+    "unicode-properties.browser.cjs.js.map"
   ],
   "author": "Devon Govett <devongovett@gmail.com>",
   "license": "MIT",
