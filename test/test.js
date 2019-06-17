@@ -1,7 +1,18 @@
 const assert = require('assert');
-const unicode = require('../');
+const node = require('../unicode-properties.cjs.js');
+const browser = require('../unicode-properties.browser.cjs.js');
 
 describe('unicode-properties', () => {
+  describe('node', () => {
+    test(node);
+  });
+
+  describe('browser', () => {
+    test(browser);
+  });
+});
+
+function test(unicode) {
   it('getCategory', () => {
     assert.equal(unicode.getCategory('2'.charCodeAt()), 'Nd');
     assert.equal(unicode.getCategory('x'.charCodeAt()), 'Ll');
@@ -80,4 +91,4 @@ describe('unicode-properties', () => {
     assert(!unicode.isMark('x'.charCodeAt()));
     assert(unicode.isMark('́'.charCodeAt()));
   });
-})
+}

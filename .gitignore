@@ -5,3 +5,4 @@ trie.json
 node_modules/
 dist/
 unicode-properties.*.js
+*.map

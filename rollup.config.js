@@ -3,11 +3,13 @@ import json from 'rollup-plugin-json';
 import { dependencies } from './package.json'
 
 const cjs = {
-  format: 'cjs'
+  format: 'cjs',
+  sourcemap: true
 }
 
 const esm = {
-  format: 'es'
+  format: 'es',
+  sourcemap: true
 }
 
 const getCJS = override => Object.assign({}, cjs, override)
@@ -17,10 +19,23 @@ const configBase = {
   plugins: [
     json({compact: true}),
     babel({
-      babelrc: false,
-      presets: [["es2015", { modules: false }]],
-      plugins: [ 'external-helpers'],
-      exclude: 'node_modules/**'
+      presets: [
+        [
+          '@babel/preset-env', 
+          {
+            modules: false,
+            targets: {
+              node: '8.11',
+              browsers: [
+                'Firefox 57',
+                'Chrome 60',
+                'iOS 10',
+                'Safari 10'
+              ]
+            }
+          }
+        ]
+      ]
     })
   ]
 }
