@@ -6,4 +6,4 @@ import buildUnicodeProperties from './index';
 const trie = new UnicodeTrie(fs.readFileSync(__dirname + '/data.trie'));
 const unicodeProperties = buildUnicodeProperties(data, trie);
 
-module.exports = unicodeProperties;
+export default unicodeProperties;

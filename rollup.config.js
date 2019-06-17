@@ -1,8 +1,8 @@
 import babel from 'rollup-plugin-babel'
+import json from 'rollup-plugin-json';
 import { dependencies } from './package.json'
 
 const cjs = {
-  exports: 'named',
   format: 'cjs'
 }
 
@@ -15,6 +15,7 @@ const getESM = override => Object.assign({}, esm, override)
 
 const configBase = {
   plugins: [
+    json({compact: true}),
     babel({
       babelrc: false,
       presets: [["es2015", { modules: false }]],
@@ -31,8 +32,7 @@ const nodeConfig = Object.assign({}, configBase, {
     getCJS({ file: './unicode-properties.cjs.js' }),
   ],
   external: Object.keys(dependencies).concat([
-    'fs',
-    `${__dirname}/data.json`
+    'fs'
   ])
 });
 
@@ -42,11 +42,7 @@ const browserConfig = Object.assign({}, configBase, {
   output: [
     getESM({ file: './unicode-properties.browser.es.js' }),
     getCJS({ file: './unicode-properties.browser.cjs.js' }),
-  ],
-  external: Object.keys(dependencies).concat([
-    `${__dirname}/data.json`,
-    `${__dirname}/trie.json`
-  ])
+  ]
 });
 
 
