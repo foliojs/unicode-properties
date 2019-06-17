@@ -1,6 +1,6 @@
 {
   "name": "unicode-properties",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "Provides fast access to unicode character properties",
   "main": "./unicode-properties.cjs.js",
   "module": "./unicode-properties.es.js",
