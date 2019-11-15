@@ -4,7 +4,8 @@ import { dependencies } from './package.json'
 
 const cjs = {
   format: 'cjs',
-  sourcemap: true
+  sourcemap: true,
+  interop: false
 }
 
 const esm = {
