@@ -1,7 +1,7 @@
 # unicode-properties
 
 Provides fast access to unicode character properties. Uses [unicode-trie](https://github.com/devongovett/unicode-trie) to compress the 
-properties for all code points into just 12KB.
+properties for all code points into just 9.5KB. Currently, unicode-properties supports Unicode version 12.
 
 ## Usage
 
