@@ -3,9 +3,9 @@
   "version": "1.3.1",
   "description": "Provides fast access to unicode character properties",
   "main": "./unicode-properties.cjs.js",
-  "module": "./unicode-properties.es.js",
+  "module": "./unicode-properties.esm.js",
   "browser": {
-    "./unicode-properties.es.js": "./unicode-properties.browser.es.js",
+    "./unicode-properties.esm.js": "./unicode-properties.browser.esm.js",
     "./unicode-properties.cjs.js": "./unicode-properties.browser.cjs.js"
   },
   "directories": {
@@ -43,12 +43,12 @@
   "files": [
     "data.json",
     "data.trie",
-    "unicode-properties.es.js",
-    "unicode-properties.es.js.map",
+    "unicode-properties.esm.js",
+    "unicode-properties.esm.js.map",
     "unicode-properties.cjs.js",
     "unicode-properties.cjs.js.map",
-    "unicode-properties.browser.es.js",
-    "unicode-properties.browser.es.js.map",
+    "unicode-properties.browser.esm.js",
+    "unicode-properties.browser.esm.js.map",
     "unicode-properties.browser.cjs.js",
     "unicode-properties.browser.cjs.js.map"
   ],
