@@ -1,6 +1,6 @@
-const codePoints = require('codepoints');
-const fs = require('fs');
-const UnicodeTrieBuilder = require('unicode-trie/builder');
+import codePoints from 'codepoints';
+import fs from 'fs';
+import UnicodeTrieBuilder from 'unicode-trie/builder.js';
 
 const log2 = Math.log2 || (n => Math.log(n) / Math.LN2);
 
@@ -86,7 +86,7 @@ for (codePoint of Array.from(codePoints)) {
     const category = categories[codePoint.category];
     const combiningClass = combiningClasses[codePoint.combiningClassName] || 0;
     const script = scripts[codePoint.script] || 0;
-    eaw = eaws[codePoint.eastAsianWidth] || 0;
+    const eaw = eaws[codePoint.eastAsianWidth] || 0;
 
     const val = (category << categoryShift) | (combiningClass << combiningShift) | (script << scriptShift) | (eaw << eawShift) | numericValue(codePoint.numeric);
 
@@ -101,7 +101,3 @@ fs.writeFileSync('./data.json', JSON.stringify({
   scripts: Object.keys(scripts),
   eaw: Object.keys(eaws)
 }));
-
-// Trie is serialized suboptimally as JSON so it can be loaded via require,
-// allowing unicode-properties to work in the browser
-fs.writeFileSync('./trie.json', JSON.stringify({ data: trie.toBuffer().toString('base64') }));

@@ -1,14 +1,22 @@
-const assert = require('assert');
-const node = require('../unicode-properties.cjs.js');
-const browser = require('../unicode-properties.browser.cjs.js');
+import assert from 'assert';
+import * as esm from 'unicode-properties';
+import esmDefault from 'unicode-properties';
+import { createRequire } from 'module';
+
+const require = createRequire(import.meta.url);
+const cjs = require('../');
 
 describe('unicode-properties', () => {
-  describe('node', () => {
-    test(node);
+  describe('esm', () => {
+    test(esm);
   });
 
-  describe('browser', () => {
-    test(browser);
+  describe('esm (default export)', () => {
+    test(esmDefault);
+  });
+
+  describe('cjs', () => {
+    test(cjs);
   });
 });
 
