@@ -1,6 +1,6 @@
 {
   "name": "unicode-properties",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "description": "Provides fast access to unicode character properties",
   "source": "index.js",
   "type": "module",
