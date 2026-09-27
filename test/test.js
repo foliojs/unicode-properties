@@ -1,15 +1,10 @@
 import assert from 'assert';
 import * as esm from '../index.js';
-import esmDefault from '../index.js';
 
 describe('unicode-properties', () => {
   describe('esm', () => {
     test(esm);
   });
-
-  describe('esm (default export)', () => {
-    test(esmDefault);
-  });  
 });
 
 function test(unicode) {

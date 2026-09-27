@@ -151,21 +151,3 @@ export function isMark(codePoint) {
     category === 'Mc'
   );
 }
-
-// Backwards compatibility.
-export default {
-  getCategory,
-  getCombiningClass,
-  getScript,
-  getEastAsianWidth,
-  getNumericValue,
-  isAlphabetic,
-  isDigit,
-  isPunctuation,
-  isLowerCase,
-  isUpperCase,
-  isTitleCase,
-  isWhiteSpace,
-  isBaseForm,
-  isMark
-};

@@ -1,6 +1,6 @@
 # unicode-properties
 
-Provides fast access to unicode character properties. Uses [unicode-trie](https://github.com/devongovett/unicode-trie) to compress the 
+Provides fast access to unicode character properties. Uses [unicode-trie](https://github.com/foliojs/unicode-trie) to compress the 
 properties for all code points into just 9.5KB. Currently, unicode-properties supports Unicode version 12.
 
 ## Usage
@@ -8,10 +8,13 @@ properties for all code points into just 9.5KB. Currently, unicode-properties su
     npm install unicode-properties
 
 ```javascript
-var unicode = require('unicode-properties');
+import { getCategory, getNumericValue } from 'unicode-properties';
 
-unicode.getCategory('2'.charCodeAt()) //=> 'Nd'
-unicode.getNumericValue('2'.charCodeAt()) //=> 2
+getCategory('2'.charCodeAt()) //=> 'Nd'
+getNumericValue('2'.charCodeAt()) //=> 2
+
+// alternatively you can import the entire module as an object
+import * as unicode from 'unicode-properties';
 ```
 
 ## API
@@ -72,6 +75,15 @@ characters.
 ### isMark(codePoint)
 
 Returns whether the code point is a mark character (e.g. accent).
+
+## CommonJS Compatibility
+
+The package is published as an ECMAScript module (ESM). To [load it using `require()`](https://nodejs.org/api/modules.html#loading-ecmascript-modules-using-require), Node.js 20.17.0 or later is required.
+
+```js
+// Example of loading the package using require() in Node.js 20.17.0 or higher
+const { getCategory, getNumericValue } = require('unicode-properties');
+```
 
 ## License
 
