@@ -1,10 +1,6 @@
 import assert from 'assert';
-import * as esm from 'unicode-properties';
-import esmDefault from 'unicode-properties';
-import { createRequire } from 'module';
-
-const require = createRequire(import.meta.url);
-const cjs = require('../');
+import * as esm from '../index.js';
+import esmDefault from '../index.js';
 
 describe('unicode-properties', () => {
   describe('esm', () => {
@@ -13,11 +9,7 @@ describe('unicode-properties', () => {
 
   describe('esm (default export)', () => {
     test(esmDefault);
-  });
-
-  describe('cjs', () => {
-    test(cjs);
-  });
+  });  
 });
 
 function test(unicode) {

@@ -1,8 +1,8 @@
-import base64 from 'base64-js';
 import UnicodeTrie from 'unicode-trie';
-import data from './data.json';
+import data from './data.js';
+import { getBinaryTrie } from '#binary-trie';
 
-const trie = new UnicodeTrie(base64.toByteArray(require('fs').readFileSync(__dirname + '/data.trie', 'base64')));
+const trie = new UnicodeTrie(getBinaryTrie());
 
 const log2 = Math.log2 || (n => Math.log(n) / Math.LN2);
 const bits = (n) => ((log2(n) + 1) | 0);

@@ -94,10 +94,12 @@ for (codePoint of Array.from(codePoints)) {
   }
 }
 
-fs.writeFileSync('./data.trie', trie.toBuffer());
-fs.writeFileSync('./data.json', JSON.stringify({
-  categories: Object.keys(categories),
-  combiningClasses: Object.keys(combiningClasses),
-  scripts: Object.keys(scripts),
-  eaw: Object.keys(eaws)
-}));
+const buffer = trie.toBuffer();
+fs.writeFileSync('./data.trie', buffer);
+fs.writeFileSync('./data.base64.trie.js', `export default "${buffer.toString('base64')}"`);
+fs.writeFileSync('./data.js', `export default {
+  categories: ${JSON.stringify(Object.keys(categories))},
+  combiningClasses: ${JSON.stringify(Object.keys(combiningClasses))},
+  scripts: ${JSON.stringify(Object.keys(scripts))},
+  eaw: ${JSON.stringify(Object.keys(eaws))}
+};`);
