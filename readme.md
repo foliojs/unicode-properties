@@ -17,6 +17,21 @@ getNumericValue('2'.charCodeAt()) //=> 2
 import * as unicode from 'unicode-properties';
 ```
 
+## Data exports
+
+The generated Unicode data is also available through package subpath exports:
+
+```javascript
+import data from 'unicode-properties/data.js';
+
+data.categories;
+data.combiningClasses;
+data.scripts;
+data.eaw;
+```
+
+The `unicode-properties/data.trie` export provides the raw binary trie used by the Node implementation. It is intended for tools and integrations that need the underlying trie data rather than the character-property API.
+
 ## API
 
 ### getCategory(codePoint)
