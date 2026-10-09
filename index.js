@@ -1,4 +1,4 @@
-import UnicodeTrie from 'unicode-trie';
+import { UnicodeTrie } from 'unicode-trie';
 import data from './data.js';
 import { getBinaryTrie } from '#binary-trie';
 

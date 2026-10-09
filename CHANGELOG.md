@@ -10,3 +10,4 @@
 - Load trie data through environment-specific Node and browser implementations.
 - Generate JavaScript modules for Unicode metadata and browser-safe Base64 trie data.
 - Update the test suite for direct ESM imports and add a browser-condition test command.
+- [BREAKING CHANGE] Update unicode-trie dependency to version 3 (compression schema changed)

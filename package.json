@@ -9,7 +9,7 @@
     "./data.js": "./data.js"
   },
   "dependencies": {
-    "unicode-trie": "^2.0.0"
+    "unicode-trie": "^3.0.0"
   },
   "devDependencies": {
     "codepoints": "^1.3.0",

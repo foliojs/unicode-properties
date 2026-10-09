@@ -1,6 +1,6 @@
 import codePoints from 'codepoints';
 import fs from 'fs';
-import UnicodeTrieBuilder from 'unicode-trie/builder.js';
+import { UnicodeTrieBuilder } from 'unicode-trie/builder.js';
 
 const log2 = Math.log2 || (n => Math.log(n) / Math.LN2);
 
@@ -80,7 +80,7 @@ const numericValue = function(numeric) {
   }
 };
 
-const trie = new UnicodeTrieBuilder;
+const trie = new UnicodeTrieBuilder();
 for (codePoint of Array.from(codePoints)) {
   if (codePoint != null) {
     const category = categories[codePoint.category];
