@@ -1,6 +1,6 @@
 {
   "name": "unicode-properties",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Provides fast access to unicode character properties",
   "type": "module",
   "exports": {
