@@ -32,6 +32,10 @@ for (var codePoint of Array.from(codePoints)) {
   }
 }
 
+// value for unassigned code points
+categories.Cn = categoryCount++;
+scripts.Unknown = scriptCount++;
+
 const numberBits = 10;
 const categoryBits = bits(categoryCount - 1);
 const combiningClassBits = bits(combiningClassCount - 1);
@@ -53,16 +57,27 @@ const numericValue = function(numeric) {
       // fraction
       const num = parseInt(m[1]);
       const den = parseInt(m[2]);
-      return ((num + 12) << 4) + (den - 1);
-    } else if (/^\d0+$/.test(numeric)) {
-      // base 10
-      mant = parseInt(numeric[0]);
-      exp = numeric.length - 1;
-      return ((mant + 14) << 5) + (exp - 2);
+      if (den <= 16) {
+        return ((num + 12) << 4) + (den - 1);
+      }
+
+      // 1|3|5|7 / 20|40|80|160|320|640 or 1|3|5|7 / 32|64|128|256
+      const start = den % 20 === 0 ? 0x324 : 0x34c;
+      const shift = log2(den / (den % 20 === 0 ? 20 : 32));
+      if (num % 2 === 0 || num > 7 || !Number.isInteger(shift) || shift > (start === 0x324 ? 5 : 3)) {
+        throw new Error(`Cannot encode numeric value ${numeric}`);
+      }
+      return start + (shift << 2) + ((num - 1) >> 1);
     } else {
       const val = parseInt(numeric);
-      if (val <= 50) {
+      if (val < 0xaf) {
+        // below the fraction range starting at 0xb0
         return 1 + val;
+      } else if (/^\d0+$/.test(numeric)) {
+        // base 10
+        mant = parseInt(numeric[0]);
+        exp = numeric.length - 1;
+        return ((mant + 14) << 5) + (exp - 2);
       } else {
         // base 60
         mant = val;
@@ -80,7 +95,7 @@ const numericValue = function(numeric) {
   }
 };
 
-const trie = new UnicodeTrieBuilder();
+const trie = new UnicodeTrieBuilder((categories.Cn << categoryShift) | (scripts.Unknown << scriptShift));
 for (codePoint of Array.from(codePoints)) {
   if (codePoint != null) {
     const category = categories[codePoint.category];
