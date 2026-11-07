@@ -51,7 +51,7 @@ export function getNumericValue(codePoint) {
 
   if (num === 0) {
     return null;
-  } else if (num <= 50) {
+  } else if (num < 0xb0) {
     return num - 1;
   } else if (num < 0x1e0) {
     const numerator = (num >> 4) - 12;
@@ -66,7 +66,7 @@ export function getNumericValue(codePoint) {
       exp--;
     }
     return val;
-  } else {
+  } else if (num < 0x324) {
     val = (num >> 2) - 0xbf;
     let exp = (num & 3) + 1;
     while (exp > 0) {
@@ -74,6 +74,12 @@ export function getNumericValue(codePoint) {
       exp--;
     }
     return val;
+  } else {
+    // fractions with denominator 20 << n or 32 << n
+    const frac = num < 0x34c ? num - 0x324 : num - 0x34c;
+    const numerator = 2 * (frac & 3) + 1;
+    const denominator = (num < 0x34c ? 20 : 32) << (frac >> 2);
+    return numerator / denominator;
   }
 }
 
