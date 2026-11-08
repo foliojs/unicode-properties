@@ -1,8 +1,14 @@
 # Changelog
 
-## v2.0.0
+## v2.0.2
 
-### Changed
+- Fix numeric values and defaults for unassigned code points (#29)
+
+## v2.0.1
+
+- Add data.trie to "files" entry
+
+## v2.0.0
 
 - [BREAKING CHANGE] Publish native ESM source files instead of bundled `dist` artifacts.
 - [BREAKING CHANGE] Remove default export
